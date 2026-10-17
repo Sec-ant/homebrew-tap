@@ -36,4 +36,13 @@ class Cinekey < Formula
     bin.install File.basename(stable.url) => "cinekey"
     (bin/"cinekey").chmod 0755
   end
+
+  test do
+    output = shell_output("#{bin}/cinekey --json Young.Justice.S02.1080p.Blu-ray.DD2.0.Hi10P.x264-CtrlHD")
+    media = JSON.parse(output)
+    assert_equal "Young Justice", media.fetch("title")
+    assert_equal 2, media.fetch("season")
+    assert_equal 10, media.fetch("video_bit_depth")
+    assert_equal "CtrlHD", media.fetch("release_group")
+  end
 end
