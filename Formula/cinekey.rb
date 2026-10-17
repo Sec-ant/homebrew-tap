@@ -1,7 +1,6 @@
 class Cinekey < Formula
   desc "Fast parser for movie and TV release names"
   homepage "https://github.com/Sec-ant/cinekey"
-  version "0.4.4"
   license "MIT"
 
   on_macos do
